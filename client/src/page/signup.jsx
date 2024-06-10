@@ -5,6 +5,7 @@ import { RegisterPendings, SignupComponent } from "../components";
 import instance from "../config/instance";
 import { setLoading } from "../redux/loading";
 import "./style.scss";
+import ToggleBtn from "../components/theme/ToggleBtn";
 
 const Signup = () => {
   const { user } = useSelector((state) => state);
@@ -63,6 +64,7 @@ const Signup = () => {
 
   return (
     <div className="Auth">
+      <ToggleBtn />
       <div className="inner">
         {pending ? (
           <RegisterPendings _id={id} />
@@ -70,9 +72,7 @@ const Signup = () => {
           <>
             <SignupComponent />
 
-            <div className="bottum">
-              
-            </div>
+            <div className="bottum"></div>
           </>
         )}
       </div>

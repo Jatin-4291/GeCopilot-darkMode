@@ -20,6 +20,7 @@ const App = () => {
   const [documents, setDocuments] = useState([]);
   const { _id } = useSelector((state) => state.messages);
   const changeColorMode = (to) => {
+    console.log(to);
     if (to) {
       localStorage.setItem("darkMode", true);
 
@@ -29,8 +30,8 @@ const App = () => {
 
       document.body.className = "light";
     }
+    console.log(document.body.className);
   };
-
   const getFiles = async () => {
     let res = null;
     if (!_id) return console.log("No chat id");
@@ -50,8 +51,8 @@ const App = () => {
   // Dark & Light Mode
   useLayoutEffect(() => {
     let mode = localStorage.getItem("darkMode");
-
-    if (mode) {
+    console.log(mode);
+    if (mode === "true") {
       changeColorMode(true);
     } else {
       changeColorMode(false);
@@ -96,30 +97,15 @@ const App = () => {
             <Route
               exact
               path="/"
-              element={
-                <Main
-                  file_id={file_id}
-                  set_file_id={set_file_id}
-                />
-              }
+              element={<Main file_id={file_id} set_file_id={set_file_id} />}
             />
             <Route
               path="/chat"
-              element={
-                <Main
-                  file_id={file_id}
-                  set_file_id={set_file_id}
-                />
-              }
+              element={<Main file_id={file_id} set_file_id={set_file_id} />}
             />
             <Route
               path="/chat/:id"
-              element={
-                <Main
-                  file_id={file_id}
-                  set_file_id={set_file_id}
-                />
-              }
+              element={<Main file_id={file_id} set_file_id={set_file_id} />}
             />
           </Route>
 
@@ -144,4 +130,3 @@ const App = () => {
 };
 
 export default App;
-

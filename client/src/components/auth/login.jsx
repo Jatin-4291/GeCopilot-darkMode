@@ -58,12 +58,12 @@ const LoginComponent = () => {
     e.preventDefault();
     const given_otp = e.target.otp.value;
     try {
-      console.log(formData.email, given_otp)
+      console.log(formData.email, given_otp);
       const otp_res = await instance.post("/api/user/verify_otp", {
         email: formData.email,
         otp: given_otp,
       });
-      console.log(otp_res.data); 
+      console.log(otp_res.data);
       if (otp_res.status === 200 && otp_res.data.message === "Success") {
         dispatch(insertUser(otp_res.data.data));
         navigate("/chat");
@@ -71,7 +71,7 @@ const LoginComponent = () => {
     } catch (err) {
       if (err.response.status === 422) {
         stateAction({ type: "error", status: true });
-        alert("Invalid OTP")
+        alert("Invalid OTP");
       }
       console.log(err);
     }
@@ -103,7 +103,7 @@ const LoginComponent = () => {
         });
 
         console.log(user_otp);
-        console.log(otp_res.data)
+        console.log(otp_res.data);
         // dispatch(insertUser(res.data.data));
         // navigate("/two_step_verification");
       }

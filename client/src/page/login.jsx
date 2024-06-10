@@ -5,6 +5,7 @@ import { Grant } from "../assets";
 import { LoginComponent } from "../components";
 import { setLoading } from "../redux/loading";
 import "./style.scss";
+import ToggleBtn from "../components/theme/ToggleBtn";
 
 const Login = () => {
   const location = useLocation();
@@ -35,6 +36,7 @@ const Login = () => {
 
   return (
     <div className="Auth">
+      <ToggleBtn />
       <div className="inner">
         {auth ? (
           <LoginComponent />
@@ -68,9 +70,7 @@ const Login = () => {
           </div>
         )}
 
-        <div className="bottum">
-          
-        </div>
+        <div className="bottum"></div>
       </div>
     </div>
   );
